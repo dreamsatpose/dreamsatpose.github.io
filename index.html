@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DreamSat-Pose</title>
+
+  <style>
+    :root {
+      --text: #1f2933;
+      --muted: #5f6c7b;
+      --accent: #1f4f8b;
+      --bg: #ffffff;
+      --soft: #f5f7fa;
+      --border: #d8dee6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+    }
+
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 56px 24px 72px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    h1 {
+      font-size: 2.15rem;
+      line-height: 1.18;
+      margin: 0 0 18px;
+      font-weight: 700;
+    }
+
+    .authors {
+      font-size: 1.02rem;
+      color: var(--muted);
+      max-width: 820px;
+      margin: 0 auto 28px;
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 9px 18px;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      transition: 0.15s ease;
+    }
+
+    .button:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    section {
+      margin-top: 36px;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+
+    .abstract {
+      text-align: justify;
+      font-size: 1.02rem;
+    }
+
+    .coming-soon {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 20px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    footer {
+      margin-top: 56px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding: 36px 18px 56px;
+      }
+
+      h1 {
+        font-size: 1.65rem;
+      }
+
+      .authors {
+        font-size: 0.96rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1>
+        DreamSat-Pose: Spacecraft Pose Estimation from Single-View 3D Reconstructions and Learned 2D-3D Feature Matching
+      </h1>
+
+      <p class="authors">
+        Josiane Uwumukiza, Jocelyn Zhao, Giovanni Lavezzi, Giacomo Battaglia,
+        Paolo Panicucci, Minduli C. Wijayatunga, Victor Rodriguez-Fernandez,
+        and Richard Linares
+      </p>
+
+      <div class="links">
+        <a class="button" href="#" aria-disabled="true">Paper Coming Soon</a>
+        <a class="button" href="https://github.com/ARCLab-MIT/dreamsat-pose" target="_blank" rel="noopener">Code</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Abstract</h2>
+      <p class="abstract">
+        6-DoF pose estimation is a critical task in autonomous rendezvous and proximity operations.
+        In the case of an unknown target, this task becomes challenging as it shall be paired with the
+        reconstruction of the target shape model. In this article, we propose a novel framework for
+        single-shot shape and pose estimation of unknown spacecraft objects. Given a single image, we
+        first reconstruct a 3D shape model of the target, then estimate the relative six-degrees-of-freedom
+        pose by learning dense 2D-3D correspondences. The image features are extracted using a frozen
+        DINOv3 vision transformer, while the geometric features are computed from the reconstructed
+        point cloud using a trainable dynamic graph convolutional neural network encoder. A dual-stream
+        transformer matcher refines descriptors through alternating self- and cross-attention, producing
+        soft correspondences that are passed to a Perspective-n-Point solver for pose recovery. We evaluate
+        the method on the SPE3R dataset and consider FoundationPose as a representative baseline for
+        current state-of-the-art capabilities. Results show reliable pose estimates using only a single image
+        and reconstructed geometry, demonstrating strong generalization to unseen spacecraft.
+      </p>
+    </section>
+
+    <section>
+      <h2>Updates</h2>
+      <div class="coming-soon">
+        Coming soon.
+      </div>
+    </section>
+
+    <footer>
+      DreamSat-Pose project page
+    </footer>
+  </main>
+</body>
+</html>
