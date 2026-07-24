@@ -32,9 +32,14 @@
       line-height: 1.65;
     }
 
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
     main {
       width: 100%;
-      max-width: 920px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 56px 24px 72px;
     }
@@ -45,7 +50,7 @@
     }
 
     h1 {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto 20px;
       font-size: 2.15rem;
       font-weight: 700;
@@ -53,9 +58,8 @@
     }
 
     .authors {
-      max-width: 820px;
+      max-width: 900px;
       margin: 0 auto 28px;
-      color: #000000;
       font-size: 1.02rem;
     }
 
@@ -92,18 +96,18 @@
     }
 
     section {
-      margin-top: 40px;
+      margin-top: 48px;
     }
 
     h2 {
-      margin: 0 0 14px;
+      margin: 0 0 16px;
       padding-bottom: 7px;
       border-bottom: 1px solid #000000;
       font-size: 1.45rem;
     }
 
     h3 {
-      margin: 26px 0 10px;
+      margin: 0 0 16px;
       font-size: 1.15rem;
     }
 
@@ -111,10 +115,77 @@
       margin-top: 0;
     }
 
+    figure {
+      margin: 0;
+    }
+
+    figcaption {
+      margin-top: 9px;
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
     .abstract {
       margin: 0;
       font-size: 1.02rem;
       text-align: justify;
+    }
+
+    .overview-image {
+      width: 100%;
+      height: auto;
+      border: 1px solid #000000;
+      background: #ffffff;
+    }
+
+    .animation-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .animation-card {
+      padding: 14px;
+      border: 1px solid #000000;
+      background: #ffffff;
+    }
+
+    .animation-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .object-results-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-top: 24px;
+    }
+
+    .object-card {
+      padding: 20px;
+      border: 1px solid #000000;
+      background: #ffffff;
+    }
+
+    .object-card h3 {
+      padding-bottom: 8px;
+      border-bottom: 1px solid #000000;
+      text-align: center;
+    }
+
+    .object-images {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.7fr) minmax(400px, 1.3fr);
+      gap: 20px;
+      align-items: center;
+    }
+
+    .object-images img {
+      width: 100%;
+      height: auto;
+      border: 1px solid #000000;
+      object-fit: contain;
     }
 
     .citation-box {
@@ -126,6 +197,10 @@
 
     .citation-box p {
       margin: 0;
+    }
+
+    .bibtex-heading {
+      margin-top: 26px;
     }
 
     pre {
@@ -152,7 +227,6 @@
       border: 1px solid #000000;
       border-radius: 4px;
       background: #ffffff;
-      color: #000000;
       font-style: italic;
     }
 
@@ -160,12 +234,11 @@
       margin-top: 56px;
       padding-top: 18px;
       border-top: 1px solid #000000;
-      color: #000000;
       font-size: 0.92rem;
       text-align: center;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 760px) {
       main {
         padding: 36px 18px 56px;
       }
@@ -182,8 +255,17 @@
         text-align: left;
       }
 
+      .animation-grid,
+      .object-images {
+        grid-template-columns: 1fr;
+      }
+
+      .object-card {
+        padding: 14px;
+      }
+
       pre {
-        font-size: 0.8rem;
+        font-size: 0.78rem;
       }
     }
   </style>
@@ -247,6 +329,277 @@
       </p>
     </section>
 
+    <section id="overview">
+      <h2>Method Overview</h2>
+
+      <figure>
+        <img
+          class="overview-image"
+          src="images/overview.png"
+          alt="Overview of the DreamSat-Pose framework"
+        />
+
+        <figcaption>
+          DreamSat-Pose reconstructs a 3D model from a single RGB image,
+          extracts 2D and 3D features, learns dense correspondences, and
+          estimates the spacecraft pose using a Perspective-n-Point solver.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section id="animated-examples">
+      <h2>Animated Examples</h2>
+
+      <div class="animation-grid">
+        <figure class="animation-card">
+          <img
+            src="images/cygnss_solo_39.gif"
+            alt="Animated DreamSat-Pose result for CYGNSS Solo 39"
+            loading="lazy"
+          />
+
+          <figcaption>
+            CYGNSS Solo 39
+          </figcaption>
+        </figure>
+
+        <figure class="animation-card">
+          <img
+            src="images/herschel.gif"
+            alt="Animated DreamSat-Pose result for Herschel"
+            loading="lazy"
+          />
+
+          <figcaption>
+            Herschel
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="qualitative-results">
+      <h2>Qualitative Examples</h2>
+
+      <p>
+        Each example shows the original spacecraft image and the estimated
+        pose compared with the reference pose.
+      </p>
+
+      <div class="object-results-grid">
+
+        <article class="object-card">
+          <h3>Aquarius</h3>
+
+          <div class="object-images">
+            <figure>
+              <img
+                src="images/best_per_object/aquarius_ud__img000720/01_image.png"
+                alt="Aquarius input image"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Input image
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="images/best_per_object/aquarius_ud__img000720/05_pose_side_by_side.png"
+                alt="Aquarius estimated pose compared with the reference pose"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Estimated pose and reference pose
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="object-card">
+          <h3>CYGNSS Solo 39</h3>
+
+          <div class="object-images">
+            <figure>
+              <img
+                src="images/best_per_object/cygnss_solo_39__img000456/01_image.png"
+                alt="CYGNSS Solo 39 input image"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Input image
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="images/best_per_object/cygnss_solo_39__img000456/05_pose_side_by_side.png"
+                alt="CYGNSS Solo 39 estimated pose compared with the reference pose"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Estimated pose and reference pose
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="object-card">
+          <h3>EO-1</h3>
+
+          <div class="object-images">
+            <figure>
+              <img
+                src="images/best_per_object/eo-1_final__img000425/01_image.png"
+                alt="EO-1 input image"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Input image
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="images/best_per_object/eo-1_final__img000425/05_pose_side_by_side.png"
+                alt="EO-1 estimated pose compared with the reference pose"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Estimated pose and reference pose
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="object-card">
+          <h3>Galileo</h3>
+
+          <div class="object-images">
+            <figure>
+              <img
+                src="images/best_per_object/galileo_actual_05__img000793/01_image.png"
+                alt="Galileo input image"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Input image
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="images/best_per_object/galileo_actual_05__img000793/05_pose_side_by_side.png"
+                alt="Galileo estimated pose compared with the reference pose"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Estimated pose and reference pose
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="object-card">
+          <h3>Herschel</h3>
+
+          <div class="object-images">
+            <figure>
+              <img
+                src="images/best_per_object/herschel__img000750/01_image.png"
+                alt="Herschel input image"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Input image
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="images/best_per_object/herschel__img000750/05_pose_side_by_side.png"
+                alt="Herschel estimated pose compared with the reference pose"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Estimated pose and reference pose
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="object-card">
+          <h3>Loral 1300</h3>
+
+          <div class="object-images">
+            <figure>
+              <img
+                src="images/best_per_object/loral-1300com-main__img000732/01_image.png"
+                alt="Loral 1300 input image"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Input image
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="images/best_per_object/loral-1300com-main__img000732/05_pose_side_by_side.png"
+                alt="Loral 1300 estimated pose compared with the reference pose"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Estimated pose and reference pose
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="object-card">
+          <h3>SMART-1</h3>
+
+          <div class="object-images">
+            <figure>
+              <img
+                src="images/best_per_object/smart_1__img000728/01_image.png"
+                alt="SMART-1 input image"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Input image
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="images/best_per_object/smart_1__img000728/05_pose_side_by_side.png"
+                alt="SMART-1 estimated pose compared with the reference pose"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Estimated pose and reference pose
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
     <section id="citation">
       <h2>Citation</h2>
 
@@ -264,7 +617,7 @@
         </p>
       </div>
 
-      <h3>BibTeX</h3>
+      <h3 class="bibtex-heading">BibTeX</h3>
 
       <pre><code>@misc{uwumukiza2026dreamsatpose,
   title = {DreamSat-Pose: Spacecraft Pose Estimation from Single-View
